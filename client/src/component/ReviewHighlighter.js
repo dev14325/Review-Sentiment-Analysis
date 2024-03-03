@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Tooltip from './Tooltip';
 
 const ReviewHighlighter = ({ content, analytics }) => {
-  const [tooltipData, setTooltipData] = useState(null);
+  
 
   const highlightSentences = () => {
     const highlightedContent = [];
@@ -19,8 +19,7 @@ const ReviewHighlighter = ({ content, analytics }) => {
           <span
             key={`${analysisIndex}-${sentenceIndex}`} // Ensure unique keys for each sentence
             style={{ backgroundColor: getSentimentColor(sentiment) }}
-            onMouseEnter={() => setTooltipData({ sentiment, topic: analysis.topic })}
-            onMouseLeave={() => setTooltipData(null)}
+           
           >
             {content.substring(lastIndex, startIndex)}
             <span className="highlighted-sentence">{content.substring(startIndex, endIndex)}</span>
@@ -53,7 +52,7 @@ const ReviewHighlighter = ({ content, analytics }) => {
   return (
     <div className="review">
       {highlightSentences()}
-      {tooltipData && <Tooltip sentiment={tooltipData.sentiment} topic={tooltipData.topic} />}
+    
     </div>
   );
 };
